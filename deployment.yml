@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: person
+  labels:
+    app: person
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: person
+  template:
+    metadata:
+      labels:
+        app: person
+    spec:
+      containers:
+        - name: person
+          image: acrjlgc17.azurecr.io/person
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      imagePullSecrets:
+        - name: regcred
+---
+#############################
+#############################
+kind: Service
+apiVersion: v1
+metadata:
+  name: person
+spec:
+  selector:
+    app: person
+  ports:
+    - port: 8001
+      targetPort: 8001
+  type: LoadBalancer
