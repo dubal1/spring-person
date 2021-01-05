@@ -1,6 +1,3 @@
-/**
- * package service implement person.
- */
 package com.everis.persons.app.model.service.impl;
 
 import com.everis.persons.app.model.document.Person;
@@ -18,8 +15,8 @@ public class PersonServiceImpl implements IPersonService {
      * inject IPersonRepository.
      */
     private final IPersonRepository repository;
+
     /**
-     *
      * @return findAllPerson.
      */
     @Override
@@ -28,12 +25,20 @@ public class PersonServiceImpl implements IPersonService {
     }
 
     /**
-     *
-     * @param document
+     * @param document .
      * @return findPersonByDocument.
      */
     @Override
     public Mono<Person> findPersonByDocument(final String document) {
         return repository.findByDocument(document);
+    }
+
+    /**
+     * @param person .
+     * @return savePerson.
+     */
+    @Override
+    public Mono<Person> savePerson(final Person person) {
+        return repository.save(person);
     }
 }

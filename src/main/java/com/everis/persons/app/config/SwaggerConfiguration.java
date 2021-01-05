@@ -13,7 +13,6 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableSwagger2
 public class SwaggerConfiguration {
     /**
-     *
      * @return Docket.
      */
     @Bean

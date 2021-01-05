@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.everis.persons</groupId>
-    <artifactId>bootcamp-persons</artifactId>
+    <artifactId>spring-persons</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bootcamp-persons</name>
+    <name>spring-persons</name>
     <description>Persons project</description>
 
     <properties>
@@ -49,6 +49,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>2.4.1</version>
         </dependency>
 
         <dependency>
