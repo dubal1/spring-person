@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 public interface IPersonRepository extends
         ReactiveMongoRepository<Person, String> {
     /**
-     *
      * @param document
      * @return findByDocument.
      */
