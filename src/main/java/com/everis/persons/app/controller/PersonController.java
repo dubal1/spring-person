@@ -1,9 +1,10 @@
 package com.everis.persons.app.controller;
 
 import com.everis.persons.app.model.document.Person;
-import com.everis.persons.app.model.service.IPersonService;
+import com.everis.persons.app.service.IPersonService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -18,13 +19,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@AllArgsConstructor
 @RestController
 public class PersonController {
     /**
      * inject IPersonService.
      */
-    private final IPersonService service;
+    @Autowired
+    private IPersonService service;
 
     /**
      * @return getAllPerson.
@@ -73,10 +74,10 @@ public class PersonController {
         Map<String, Object> objectMap = new HashMap<>();
         return personMono
                 .flatMap(person -> {
-                    return service.savePerson(person)
-                            .doOnNext(p -> log.info("created person: " + person.getDocument()))
-                            .map(savedPerson -> {
-                                objectMap.put("person", person);
+                    return service.findPersonByDocument(person.getDocument())
+                            .doOnNext(p -> log.info("existing person: " + person.getDocument()))
+                            .map(existingPerson -> {
+                                objectMap.put("person", existingPerson);
                                 objectMap.put("success", true);
                                 return new ResponseEntity<>(objectMap, HttpStatus.CREATED);
                             })

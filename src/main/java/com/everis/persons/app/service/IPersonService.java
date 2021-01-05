@@ -1,4 +1,4 @@
-package com.everis.persons.app.model.service;
+package com.everis.persons.app.service;
 
 import com.everis.persons.app.model.document.Person;
 import reactor.core.publisher.Flux;

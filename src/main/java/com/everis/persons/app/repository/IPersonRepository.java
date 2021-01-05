@@ -1,7 +1,7 @@
 /**
  * package repository person.
  */
-package com.everis.persons.app.model.repository;
+package com.everis.persons.app.repository;
 
 import com.everis.persons.app.model.document.Person;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
